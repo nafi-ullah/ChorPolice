@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+  backend:
+    build: ./BakcendTemplate
+    container_name: node_api
+    restart: always 
+    ports:
+      - '3001:3001'
+
+  frontend:
+    build: ./FrontendTemplate
+    container_name: chor_ui
+    ports:
+      - '8080:8080'
+    stdin_open: true
+  
+
+    
+
+  # database:
+  #   image: mongo
+  #   container_name: mongo_db
+  #   ports:
+  #     - "27017:27017"
+  #   volumes:
+  #     - /home/noneed/mongo-backup:/data/db
+  #   networks:
+  #     - mern-network
+
+
