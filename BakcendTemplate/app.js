@@ -5,15 +5,36 @@ const cors = require("cors");
 const { Server } = require("socket.io");
 app.use(cors());
 
+app.get('/', (req, res) => {
+  res.json([
+    {
+      "id":"1",
+      "title":"Book Review: The Name of the Wind"
+    },
+    {
+      "id":"2",
+      "title":"Game Review: Pokemon Brillian Diamond"
+    },
+    {
+      "id":"3",
+      "title":"Show Review: Alice in Borderland"
+    }
+  ])
+})
+
+
+
 const server = http.createServer(app);
 const connectedUsers = [];
 
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:5173",
+    origin: "*",
     methods: ["GET", "POST"],
   },
 });
+
+
 const usersInRoom = {}, curShuffle = {};
 io.on("connection", (socket) => {
 
@@ -77,6 +98,8 @@ io.on("connection", (socket) => {
     console.log("User Disconnected",  socket.id);    
   });  
 });
+
+
 
 
 

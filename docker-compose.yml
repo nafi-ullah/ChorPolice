@@ -2,11 +2,13 @@ version: "3.8"
 
 services:
   backend:
-    build: ./BakcendTemplate
+    build: 
+      context: ./BakcendTemplate
     container_name: node_api
-    restart: always 
     ports:
       - '3001:3001'
+    env_file:
+      - .env  
 
   frontend:
     build: ./FrontendTemplate
@@ -14,7 +16,7 @@ services:
     ports:
       - '8080:8080'
     stdin_open: true
-  
+
 
     
 
