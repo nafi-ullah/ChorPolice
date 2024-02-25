@@ -29,7 +29,7 @@ const connectedUsers = [];
 
 const io = new Server(server, {
   cors: {
-    origin: "*",
+    origin: "http://frontend:8080",
     methods: ["GET", "POST"],
   },
 });
