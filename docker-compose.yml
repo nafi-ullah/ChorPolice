@@ -1,6 +1,17 @@
 version: "3.8"
 
 services:
+  frontend:
+    build: ./FrontendTemplate
+    container_name: chor_ui
+    ports:
+      - '8080:8080'
+    stdin_open: true
+    networks:
+      - my_network
+    depends_on:
+      - backend
+
   backend:
     build: 
       context: ./BakcendTemplate
@@ -8,16 +19,11 @@ services:
     ports:
       - '3001:3001'
     env_file:
-      - .env  
-
-  frontend:
-    build: ./FrontendTemplate
-    container_name: chor_ui
-    ports:
-      - '8080:8080'
-    stdin_open: true
-
-
+      - .env
+    networks:
+      - my_network
+networks:
+  my_network:
     
 
   # database:

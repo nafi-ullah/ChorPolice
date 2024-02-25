@@ -4,7 +4,7 @@ import { useState } from "react";
 import Chat from "./chat.jsx";
 import RoomLobby from "./RoomLobby.jsx";
 
-const socket = io.connect("http://localhost:3001");
+const socket = io.connect("http://backend:3001");
 
 function Friend_page() {
   const [username, setUsername] = useState("");
